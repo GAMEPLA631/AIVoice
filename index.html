@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LabsOmar - AI Media Studio</title>
+    <title>LabsOmar - Lovo.ai Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -25,7 +25,7 @@
             bottom: 0;
             background: 
                 radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
             z-index: -1;
         }
 
@@ -38,19 +38,19 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
             filter: brightness(1.1);
         }
 
         .loader {
             border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid #06b6d4;
+            border-top: 3px solid #ec4899;
             border-radius: 50%;
             width: 20px;
             height: 20px;
@@ -60,9 +60,9 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .token-badge {
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            color: #22d3ee;
+            background: rgba(236, 72, 153, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            color: #f472b6;
         }
 
         input, textarea, select {
@@ -73,13 +73,13 @@
 
         input:focus {
             outline: none !important;
-            border-color: #06b6d4 !important;
-            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.3) !important;
+            border-color: #ec4899 !important;
+            box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.3) !important;
         }
 
         .tab-active {
-            background: rgba(99, 102, 241, 0.2);
-            border-color: rgba(99, 102, 241, 0.5);
+            background: rgba(236, 72, 153, 0.2);
+            border-color: rgba(236, 72, 153, 0.5);
             color: white;
         }
     </style>
@@ -91,11 +91,11 @@
     <div id="authContainer" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden">
         <div class="glass-card w-full max-w-md p-8">
             <div class="text-center mb-8">
-                <div class="inline-flex p-3 rounded-2xl bg-indigo-500/10 mb-4">
-                    <i data-lucide="shield-check" class="w-8 h-8 text-indigo-400"></i>
+                <div class="inline-flex p-3 rounded-2xl bg-pink-500/10 mb-4">
+                    <i data-lucide="user-check" class="w-8 h-8 text-pink-400"></i>
                 </div>
-                <h2 id="authTitle" class="text-2xl font-bold">Vitajte v LabsOmar</h2>
-                <p id="authSubtitle" class="text-slate-400 text-sm mt-2">Prihláste sa do svojho štúdia</p>
+                <h2 id="authTitle" class="text-2xl font-bold">LabsOmar Studio</h2>
+                <p id="authSubtitle" class="text-slate-400 text-sm mt-2">Prihláste sa pomocou @LabsOmar.com</p>
             </div>
 
             <form id="authForm" class="space-y-4">
@@ -119,7 +119,7 @@
             </form>
 
             <div class="mt-6 text-center">
-                <button id="toggleAuthMode" class="text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+                <button id="toggleAuthMode" class="text-sm text-pink-400 hover:text-pink-300 font-medium">
                     Nemáte účet? Zaregistrujte sa
                 </button>
             </div>
@@ -131,11 +131,11 @@
         <!-- Header -->
         <header class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
             <div class="flex items-center gap-4">
-                <div class="bg-indigo-600 p-3 rounded-2xl shadow-lg shadow-indigo-500/20">
-                    <i data-lucide="waves" class="w-8 h-8 text-white"></i>
+                <div class="bg-pink-600 p-3 rounded-2xl shadow-lg shadow-pink-500/20">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-white"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-extrabold tracking-tight">LabsOmar <span class="text-indigo-400 text-lg font-medium">AI Media Studio</span></h1>
+                    <h1 class="text-2xl font-extrabold tracking-tight">LabsOmar <span class="text-pink-400 text-lg font-medium">Lovo Genny</span></h1>
                     <div class="flex items-center gap-2 mt-1">
                         <span id="userBadge" class="text-xs font-medium text-slate-400">neprihlásený</span>
                         <button id="logoutBtn" class="text-[10px] text-red-400 hover:underline">Odhlásiť</button>
@@ -160,167 +160,76 @@
             </div>
         </header>
 
-        <!-- Mode Toggle -->
-        <div class="flex justify-center mb-10">
-            <div class="glass-card p-1.5 flex gap-2">
-                <button id="modeVoice" class="tab-active px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all">
-                    <i data-lucide="mic" class="w-4 h-4"></i> Hlasy
-                </button>
-                <button id="modeMusic" class="px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all text-slate-400 hover:text-white">
-                    <i data-lucide="music" class="w-4 h-4"></i> Hudba
-                </button>
-            </div>
-        </div>
-
         <!-- API Settings -->
-        <div id="settingsPanel" class="hidden mb-8 glass-card p-6 border-indigo-500/30">
+        <div id="settingsPanel" class="hidden mb-8 glass-card p-6 border-pink-500/30">
             <div class="flex justify-between items-start mb-4">
                 <h2 class="text-lg font-bold flex items-center gap-2">
-                    <i data-lucide="key-round" class="w-5 h-5 text-indigo-400"></i>
-                    Konfigurácia API
+                    <i data-lucide="key-round" class="w-5 h-5 text-pink-400"></i>
+                    Lovo.ai API Konfigurácia
                 </h2>
             </div>
             <div class="flex gap-4">
-                <input type="password" id="apiKeyInput" placeholder="Vložte ElevenLabs API kľúč" 
+                <input type="password" id="apiKeyInput" placeholder="Vložte Lovo.ai API kľúč" 
                        class="flex-1 px-4 py-3 rounded-xl focus:outline-none">
-                <button id="saveSettings" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold transition-all">
+                <button id="saveSettings" class="px-6 py-3 bg-pink-600 hover:bg-pink-500 rounded-xl font-bold transition-all">
                     Uložiť
                 </button>
             </div>
+            <p class="text-[10px] text-slate-500 mt-2">Kľúč nájdete v dashboarde Lovo.ai v sekcii API.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <!-- Left Side: Inputs -->
             <div class="lg:col-span-8 space-y-6">
-                <!-- Voice Input Section -->
-                <div id="sectionVoice" class="space-y-6">
-                    <div class="glass-card p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <div class="flex items-center gap-2 text-indigo-400 font-semibold uppercase text-xs tracking-widest">
-                                <i data-lucide="align-left" class="w-4 h-4"></i>
-                                Text na hovorenie
-                            </div>
-                            <div id="costIndicatorVoice" class="text-xs text-slate-500 italic">Cena: 0 tokenov</div>
+                <div class="glass-card p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-2 text-pink-400 font-semibold uppercase text-xs tracking-widest">
+                            <i data-lucide="align-left" class="w-4 h-4"></i>
+                            Text na hovorenie
                         </div>
-                        <textarea id="textInput" rows="10" 
-                                  class="w-full p-6 rounded-2xl text-lg leading-relaxed focus:outline-none custom-scrollbar resize-none"
-                                  placeholder="Čo má LabsOmar povedať?"></textarea>
-                        <div class="flex justify-between mt-4">
-                            <span id="charCount" class="text-sm text-slate-500 font-medium">0 / 5000 znakov</span>
-                        </div>
+                        <div id="costIndicator" class="text-xs text-slate-500 italic">Cena: 0 tokenov</div>
                     </div>
-
-                    <div class="glass-card p-8">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 flex items-center gap-2">
-                            <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
-                            Parametre hlasu
-                        </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
-                            <div class="space-y-6">
-                                <div class="group">
-                                    <div class="flex justify-between mb-2">
-                                        <label class="text-sm text-slate-300 font-semibold">Stabilita</label>
-                                        <span class="text-xs font-bold text-cyan-400" id="stabilityVal">50%</span>
-                                    </div>
-                                    <input type="range" id="stability" min="0" max="100" value="50" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-500">
-                                </div>
-                                <div class="group">
-                                    <div class="flex justify-between mb-2">
-                                        <label class="text-sm text-slate-300 font-semibold">Podobnosť</label>
-                                        <span class="text-xs font-bold text-cyan-400" id="similarityVal">75%</span>
-                                    </div>
-                                    <input type="range" id="similarity" min="0" max="100" value="75" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-500">
-                                </div>
-                            </div>
-                            <div class="space-y-6">
-                                <div class="group">
-                                    <div class="flex justify-between mb-2">
-                                        <label class="text-sm text-slate-300 font-semibold">Exagerácia štýlu</label>
-                                        <span class="text-xs font-bold text-cyan-400" id="styleVal">0%</span>
-                                    </div>
-                                    <input type="range" id="style" min="0" max="100" value="0" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-500">
-                                </div>
-                                <label class="flex items-center gap-4 cursor-pointer p-3 rounded-xl bg-slate-900/50 hover:bg-slate-800 transition-colors">
-                                    <input type="checkbox" id="useSpeakerBoost" checked class="w-5 h-5 accent-cyan-500">
-                                    <span class="text-sm font-medium text-slate-300">Speaker Boost</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Music Input Section -->
-                <div id="sectionMusic" class="space-y-6 hidden">
-                    <div class="glass-card p-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <div class="flex items-center gap-2 text-fuchsia-400 font-semibold uppercase text-xs tracking-widest">
-                                <i data-lucide="sparkles" class="w-4 h-4"></i>
-                                Popis hudby (Prompt)
-                            </div>
-                            <div class="text-xs text-slate-500 italic">Cena: 1,500 tokenov</div>
-                        </div>
-                        <textarea id="musicPrompt" rows="8" 
-                                  class="w-full p-6 rounded-2xl text-lg leading-relaxed focus:outline-none custom-scrollbar resize-none border-fuchsia-500/20"
-                                  placeholder="Napr.: Energický cyberpunk techno track s hlbokými basmi a futuristickou atmosférou..."></textarea>
-                    </div>
-
-                    <div class="glass-card p-8">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-8 flex items-center gap-2">
-                            <i data-lucide="clock" class="w-4 h-4"></i>
-                            Dĺžka skladby
-                        </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <button class="music-duration-btn py-3 rounded-xl border border-slate-700 hover:border-fuchsia-500 transition-all font-bold text-sm bg-slate-900/50" data-seconds="30">30 Sekúnd</button>
-                            <button class="music-duration-btn py-3 rounded-xl border border-fuchsia-500/50 bg-fuchsia-500/10 font-bold text-sm" data-seconds="60">1 Minúta</button>
-                            <button class="music-duration-btn py-3 rounded-xl border border-slate-700 hover:border-fuchsia-500 transition-all font-bold text-sm bg-slate-900/50" data-seconds="120">2 Minúty</button>
-                        </div>
+                    <textarea id="textInput" rows="10" 
+                              class="w-full p-6 rounded-2xl text-lg leading-relaxed focus:outline-none custom-scrollbar resize-none"
+                              placeholder="Čo má LabsOmar povedať pomocou Lovo.ai?"></textarea>
+                    <div class="flex justify-between mt-4">
+                        <span id="charCount" class="text-sm text-slate-500 font-medium">0 / 5000 znakov</span>
+                        <button id="clearText" class="text-xs text-slate-400 hover:text-white transition-colors">Vymazať</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Side: Voices & Actions -->
+            <!-- Right Side: Actions -->
             <div class="lg:col-span-4 space-y-6">
                 <div class="glass-card p-6">
-                    <div id="voiceModelSelect">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-                            <i data-lucide="mic-2" class="w-4 h-4"></i>
-                            Hlasový model
-                        </h2>
-                        <div class="relative mb-6">
-                            <select id="voiceSelect" class="w-full p-4 rounded-xl appearance-none cursor-pointer pr-10">
-                                <option value="">Načítavam modely...</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div id="musicModelSelect" class="hidden">
-                        <h2 class="text-sm font-bold uppercase tracking-widest text-fuchsia-400 mb-4 flex items-center gap-2">
-                            <i data-lucide="guitar" class="w-4 h-4"></i>
-                            AI Music Model
-                        </h2>
-                        <div class="p-4 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/30 mb-6">
-                            <p class="text-xs font-bold text-fuchsia-200">ElevenLabs Music (Alpha)</p>
-                            <p class="text-[10px] text-fuchsia-400/80 mt-1">Najpokročilejšie generovanie hudby z textu.</p>
-                        </div>
+                    <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                        Výber hlasu (Lovo)
+                    </h2>
+                    <div class="relative mb-6">
+                        <select id="voiceSelect" class="w-full p-4 rounded-xl appearance-none cursor-pointer pr-10">
+                            <option value="">Načítavam hlasy...</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-5 w-4 h-4 text-slate-500"></i>
                     </div>
 
                     <button id="generateBtn" class="w-full btn-primary text-white font-black py-5 rounded-2xl shadow-xl flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
                         <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
-                        GENEROVAŤ AUDIO
+                        GENEROVAŤ HLAS
                     </button>
                 </div>
 
                 <!-- Results -->
-                <div id="resultCard" class="hidden glass-card p-6 border-cyan-500/30 overflow-hidden relative">
-                    <div id="resultAccent" class="absolute top-0 left-0 w-1 h-full bg-cyan-500"></div>
+                <div id="resultCard" class="hidden glass-card p-6 border-pink-500/30 overflow-hidden relative">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-pink-500"></div>
                     <div class="flex items-center justify-between mb-4">
-                        <span id="resultLabel" class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Dokončené</span>
+                        <span class="text-xs font-bold text-pink-400 uppercase tracking-widest">Pripravené</span>
                         <span class="text-[10px] text-slate-500" id="timestamp">teraz</span>
                     </div>
-                    <audio id="audioPlayer" controls class="w-full mb-4 accent-cyan-500"></audio>
-                    <a id="downloadBtn" href="#" download="labs-omar-audio.mp3" class="w-full flex items-center justify-center gap-2 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-bold transition-all">
+                    <audio id="audioPlayer" controls class="w-full mb-4 accent-pink-500"></audio>
+                    <a id="downloadBtn" href="#" target="_blank" class="w-full flex items-center justify-center gap-2 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-bold transition-all">
                         <i data-lucide="download-cloud" class="w-4 h-4"></i>
-                        STIAHNUŤ SÚBOR
+                        OTVORIŤ / STIAHNUŤ
                     </a>
                 </div>
 
@@ -335,17 +244,14 @@
         // KONŠTANTY
         const INITIAL_TOKENS = 20000;
         const REFILL_INTERVAL = 24 * 60 * 60 * 1000;
-        const MUSIC_COST = 1500;
         const DOMAIN = "@LabsOmar.com";
 
         // ŠTÁT
         const state = {
             currentUser: null,
             users: JSON.parse(localStorage.getItem('labs_omar_users') || '[]'),
-            apiKey: localStorage.getItem('labs_omar_api_key') || '',
+            apiKey: localStorage.getItem('labs_omar_lovo_api_key') || '',
             isGenerating: false,
-            activeMode: 'voice', // voice | music
-            musicDuration: 60,
             mode: 'login'
         };
 
@@ -356,61 +262,25 @@
             tokenDisplay: document.getElementById('tokenDisplay'),
             userBadge: document.getElementById('userBadge'),
             refillCountdown: document.getElementById('refillCountdown'),
-            voiceSection: document.getElementById('sectionVoice'),
-            musicSection: document.getElementById('sectionMusic'),
-            voiceModelSelect: document.getElementById('voiceModelSelect'),
-            musicModelSelect: document.getElementById('musicModelSelect'),
             generateBtn: document.getElementById('generateBtn'),
             resultCard: document.getElementById('resultCard'),
-            resultAccent: document.getElementById('resultAccent'),
-            resultLabel: document.getElementById('resultLabel'),
             audioPlayer: document.getElementById('audioPlayer'),
             downloadBtn: document.getElementById('downloadBtn'),
             textInput: document.getElementById('textInput'),
-            musicPrompt: document.getElementById('musicPrompt'),
             statusMessage: document.getElementById('statusMessage'),
             voiceSelect: document.getElementById('voiceSelect'),
-            apiKeyInput: document.getElementById('apiKeyInput')
+            apiKeyInput: document.getElementById('apiKeyInput'),
+            settingsPanel: document.getElementById('settingsPanel')
         };
 
-        // PREPÍNANIE REŽIMOV
-        document.getElementById('modeVoice').addEventListener('click', () => switchMode('voice'));
-        document.getElementById('modeMusic').addEventListener('click', () => switchMode('music'));
-
-        function switchMode(mode) {
-            state.activeMode = mode;
-            const isVoice = mode === 'voice';
-            
-            document.getElementById('modeVoice').className = isVoice ? 'tab-active px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all' : 'px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all text-slate-400 hover:text-white';
-            document.getElementById('modeMusic').className = !isVoice ? 'tab-active px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all border-fuchsia-500/50 bg-fuchsia-500/10' : 'px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all text-slate-400 hover:text-white';
-            
-            elements.voiceSection.classList.toggle('hidden', !isVoice);
-            elements.musicSection.classList.toggle('hidden', isVoice);
-            elements.voiceModelSelect.classList.toggle('hidden', !isVoice);
-            elements.musicModelSelect.classList.toggle('hidden', isVoice);
-            
-            elements.generateBtn.className = `w-full ${isVoice ? 'btn-primary' : 'bg-gradient-to-r from-fuchsia-600 to-indigo-600 hover:from-fuchsia-500 hover:to-indigo-500'} text-white font-black py-5 rounded-2xl shadow-xl flex items-center justify-center gap-3 transition-all active:scale-[0.98]`;
-            
-            elements.resultCard.classList.add('hidden');
-        }
-
-        // HUDOBNÉ DĹŽKY
-        document.querySelectorAll('.music-duration-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.music-duration-btn').forEach(b => b.className = 'music-duration-btn py-3 rounded-xl border border-slate-700 hover:border-fuchsia-500 transition-all font-bold text-sm bg-slate-900/50');
-                btn.className = 'music-duration-btn py-3 rounded-xl border border-fuchsia-500/50 bg-fuchsia-500/10 font-bold text-sm';
-                state.musicDuration = parseInt(btn.dataset.seconds);
-            });
-        });
-
-        // SYSTÉM TOKENOV A POUŽÍVATEĽOV
+        // SYSTÉM TOKENOV
         function saveUsers() { localStorage.setItem('labs_omar_users', JSON.stringify(state.users)); }
 
-        function checkAndRefillTokens() {
+        function checkRefill() {
             if (!state.currentUser) return;
             const now = Date.now();
-            const lastRefill = state.currentUser.lastRefill || now;
-            if (now - lastRefill >= REFILL_INTERVAL) {
+            const last = state.currentUser.lastRefill || now;
+            if (now - last >= REFILL_INTERVAL) {
                 state.currentUser.tokens = INITIAL_TOKENS;
                 state.currentUser.lastRefill = now;
                 syncUser();
@@ -439,127 +309,103 @@
             }
         }
 
-        // ELEVENLABS API CORE
-        async function fetchVoices() {
+        // LOVO.AI API LOGIKA
+        async function fetchLovoVoices() {
             if (!state.apiKey) return;
+            elements.voiceSelect.innerHTML = '<option>Načítavam Lovo hlasy...</option>';
             try {
-                const res = await fetch('https://api.elevenlabs.io/v1/voices', { headers: { 'xi-api-key': state.apiKey } });
+                const res = await fetch('https://api.lovo.ai/v1/speakers', {
+                    headers: { 'X-API-KEY': state.apiKey }
+                });
+                if (!res.ok) throw new Error('Neplatný Lovo API kľúč.');
                 const data = await res.json();
-                elements.voiceSelect.innerHTML = data.voices.map(v => `<option value="${v.voice_id}">${v.name} (${v.category})</option>`).join('');
-            } catch (e) { showStatus('Chyba načítania hlasov.', 'error'); }
+                // Lovo vracia pole objektov s ID a menom
+                elements.voiceSelect.innerHTML = data.map(s => 
+                    `<option value="${s.id}">${s.displayName} (${s.locale})</option>`
+                ).join('');
+                showStatus('Hlasy z Lovo.ai načítané.', 'success');
+            } catch (e) {
+                showStatus(e.message, 'error');
+                elements.voiceSelect.innerHTML = '<option value="">Chyba načítania</option>';
+            }
         }
 
-        // GENERÁCIA - HLAVNÁ LOGIKA
-        elements.generateBtn.addEventListener('click', async () => {
-            if (!state.apiKey) { showStatus('Chýba API kľúč.', 'error'); return; }
-            checkAndRefillTokens();
-
-            if (state.activeMode === 'voice') {
-                await generateVoice();
-            } else {
-                await generateMusic();
-            }
-        });
-
-        async function generateVoice() {
+        async function generateLovoVoice() {
             const text = elements.textInput.value.trim();
-            const voiceId = elements.voiceSelect.value;
+            const speakerId = elements.voiceSelect.value;
             const cost = text.length;
 
+            if (!state.apiKey) return showStatus('Zadajte Lovo API kľúč.', 'error');
             if (cost < 2) return showStatus('Zadajte text.', 'error');
             if (state.currentUser.tokens < cost) return showStatus('Nedostatok tokenov.', 'error');
 
             setLoading(true);
             try {
-                const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+                const res = await fetch('https://api.lovo.ai/v1/text-to-speech', {
                     method: 'POST',
-                    headers: { 'xi-api-key': state.apiKey, 'Content-Type': 'application/json' },
+                    headers: { 
+                        'X-API-KEY': state.apiKey,
+                        'Content-Type': 'application/json' 
+                    },
                     body: JSON.stringify({
-                        text: text,
-                        model_id: 'eleven_multilingual_v2',
-                        voice_settings: {
-                            stability: document.getElementById('stability').value / 100,
-                            similarity_boost: document.getElementById('similarity').value / 100
-                        }
+                        speaker: speakerId,
+                        text: text
                     })
                 });
-                if (!res.ok) {
-                   const err = await res.json().catch(() => ({}));
-                   throw new Error(err.detail?.message || 'Chyba API pri generovaní hlasu.');
-                }
+
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.message || 'Chyba pri generovaní v Lovo.ai');
+
+                // Lovo.ai zvyčajne vracia pole 'urls' alebo 'url'
+                const audioUrl = data.urls ? data.urls[0] : (data.url || null);
                 
+                if (!audioUrl) throw new Error('Lovo.ai nevrátilo žiadnu URL adresu audia.');
+
                 state.currentUser.tokens -= cost;
                 syncUser();
-                handleResult(await res.blob(), 'voice');
-            } catch (e) { showStatus(e.message, 'error'); }
-            finally { setLoading(false); }
+
+                elements.audioPlayer.src = audioUrl;
+                elements.downloadBtn.href = audioUrl;
+                elements.resultCard.classList.remove('hidden');
+                document.getElementById('timestamp').innerText = new Date().toLocaleTimeString();
+                showStatus('Lovo vygeneroval audio!', 'success');
+
+            } catch (e) {
+                showStatus(e.message, 'error');
+            } finally {
+                setLoading(false);
+            }
         }
 
-        async function generateMusic() {
-            const prompt = elements.musicPrompt.value.trim();
-            if (!prompt) return showStatus('Zadajte popis hudby.', 'error');
-            if (state.currentUser.tokens < MUSIC_COST) return showStatus('Nedostatok tokenov na hudbu.', 'error');
+        // UI OVLÁDANIE
+        elements.generateBtn.addEventListener('click', generateLovoVoice);
 
-            setLoading(true);
-            try {
-                // ElevenLabs Music API (Alpha Endpoint)
-                const res = await fetch('https://api.elevenlabs.io/v1/text-to-music', {
-                    method: 'POST',
-                    headers: { 'xi-api-key': state.apiKey, 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        text: prompt,
-                        duration_seconds: state.musicDuration
-                    })
-                });
-                
-                if (!res.ok) {
-                    const err = await res.json().catch(() => ({}));
-                    // Ak je chyba v API, vypíšeme konkrétny dôvod (napr. že predplatné nepodporuje hudbu)
-                    throw new Error(err.detail?.message || 'Hudobný model je momentálne nedostupný alebo váš balík ho nepodporuje.');
-                }
-
-                state.currentUser.tokens -= MUSIC_COST;
-                syncUser();
-                handleResult(await res.blob(), 'music');
-            } catch (e) { 
-                showStatus(e.message, 'error'); 
-            } finally { setLoading(false); }
-        }
-
-        function handleResult(blob, mode) {
-            const url = URL.createObjectURL(blob);
-            elements.audioPlayer.src = url;
-            elements.downloadBtn.href = url;
-            elements.resultCard.classList.remove('hidden');
-            elements.resultAccent.className = `absolute top-0 left-0 w-1 h-full ${mode === 'voice' ? 'bg-cyan-500' : 'bg-fuchsia-500'}`;
-            elements.resultLabel.className = `text-xs font-bold uppercase tracking-widest ${mode === 'voice' ? 'text-cyan-400' : 'text-fuchsia-400'}`;
-            elements.resultLabel.innerText = mode === 'voice' ? 'Hlas Dokončený' : 'Hudba Vygenerovaná';
-            document.getElementById('timestamp').innerText = new Date().toLocaleTimeString();
-            showStatus('Audio pripravené!', 'success');
-        }
-
-        // POMOCNÉ FUNKCIE
         function setLoading(l) {
             elements.generateBtn.disabled = l;
-            elements.generateBtn.innerHTML = l ? `<div class="loader"></div> Generujem...` : `<i data-lucide="zap" class="w-5 h-5 fill-current"></i> GENEROVAŤ AUDIO`;
+            elements.generateBtn.innerHTML = l ? `<div class="loader"></div>` : `<i data-lucide="zap" class="w-5 h-5 fill-current"></i> GENEROVAŤ HLAS`;
             if(!l) lucide.createIcons();
         }
 
         function showStatus(msg, type) {
             elements.statusMessage.innerText = msg;
-            elements.statusMessage.className = `p-4 rounded-2xl text-xs font-medium border animate-pulse ${type === 'error' ? 'border-red-500 text-red-400' : (type === 'success' ? 'border-green-500 text-green-400' : 'border-indigo-500 text-indigo-400')}`;
+            elements.statusMessage.className = `p-4 rounded-2xl text-xs font-medium border animate-pulse ${type === 'error' ? 'border-red-500 text-red-400' : 'border-pink-500 text-pink-400'}`;
             elements.statusMessage.classList.remove('hidden');
-            setTimeout(() => elements.statusMessage.classList.add('hidden'), 4000);
+            setTimeout(() => elements.statusMessage.classList.add('hidden'), 5000);
         }
 
-        // AUTH FORM LOGIKA
+        elements.textInput.addEventListener('input', () => {
+            const len = elements.textInput.value.length;
+            document.getElementById('charCount').innerText = `${len} / 5000 znakov`;
+            document.getElementById('costIndicator').innerText = `Cena: ${len} tokenov`;
+        });
+
+        // AUTH & SETTINGS
         document.getElementById('authForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('emailPrefix').value.trim() + DOMAIN;
             const pass = document.getElementById('authPassword').value;
             
             if (state.mode === 'register') {
-                if(state.users.find(u => u.email === email)) return showStatus('Účet už existuje.', 'error');
                 const user = { email, password: pass, tokens: INITIAL_TOKENS, lastRefill: Date.now() };
                 state.users.push(user);
                 saveUsers();
@@ -575,16 +421,22 @@
             elements.app.classList.remove('opacity-0');
             elements.userBadge.innerText = state.currentUser.email;
             elements.tokenDisplay.innerText = state.currentUser.tokens.toLocaleString();
-            if (state.apiKey) fetchVoices();
-            checkAndRefillTokens();
+            checkRefill();
+            if (state.apiKey) fetchLovoVoices();
+        });
+
+        document.getElementById('toggleSettings').addEventListener('click', () => elements.settingsPanel.classList.toggle('hidden'));
+        document.getElementById('saveSettings').addEventListener('click', () => {
+            state.apiKey = elements.apiKeyInput.value.trim();
+            localStorage.setItem('labs_omar_lovo_api_key', state.apiKey);
+            fetchLovoVoices();
+            elements.settingsPanel.classList.add('hidden');
         });
 
         document.getElementById('toggleAuthMode').addEventListener('click', () => {
             state.mode = state.mode === 'login' ? 'register' : 'login';
-            document.getElementById('authTitle').innerText = state.mode === 'login' ? 'Vitajte v LabsOmar' : 'Nová registrácia';
-            document.getElementById('authSubtitle').innerText = state.mode === 'login' ? 'Prihláste sa do svojho štúdia' : 'Získajte svojich 20 000 tokenov zdarma';
+            document.getElementById('authTitle').innerText = state.mode === 'login' ? 'LabsOmar Studio' : 'Nová registrácia';
             document.getElementById('authSubmitBtn').innerText = state.mode === 'login' ? 'Vstúpiť do štúdia' : 'Vytvoriť účet';
-            document.getElementById('toggleAuthMode').innerText = state.mode === 'login' ? 'Nemáte účet? Zaregistrujte sa' : 'Už máte účet? Prihláste sa';
         });
 
         document.getElementById('logoutBtn').addEventListener('click', () => {
@@ -592,26 +444,19 @@
             location.reload();
         });
 
-        document.getElementById('toggleSettings').addEventListener('click', () => elements.settingsPanel.classList.toggle('hidden'));
-        document.getElementById('saveSettings').addEventListener('click', () => {
-            state.apiKey = elements.apiKeyInput.value.trim();
-            localStorage.setItem('labs_omar_api_key', state.apiKey);
-            fetchVoices();
-            elements.settingsPanel.classList.add('hidden');
-        });
-
-        setInterval(updateCountdown, 1000);
+        setInterval(checkRefill, 1000);
 
         window.onload = () => {
             const session = localStorage.getItem('labs_omar_current_session');
+            elements.apiKeyInput.value = state.apiKey;
             if (session) {
                 state.currentUser = JSON.parse(session);
                 elements.auth.classList.add('hidden');
                 elements.app.classList.remove('opacity-0');
                 elements.userBadge.innerText = state.currentUser.email;
                 elements.tokenDisplay.innerText = state.currentUser.tokens.toLocaleString();
-                if (state.apiKey) fetchVoices();
-                checkAndRefillTokens();
+                if (state.apiKey) fetchLovoVoices();
+                checkRefill();
             } else {
                 elements.auth.classList.remove('hidden');
             }
