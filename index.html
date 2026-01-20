@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LabsOmar - Lovo.ai Studio</title>
+    <title>LabsOmar - Multi AI Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -25,7 +25,7 @@
             bottom: 0;
             background: 
                 radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 100% 100%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
             z-index: -1;
         }
 
@@ -38,19 +38,19 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(236, 72, 153, 0.3);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
             filter: brightness(1.1);
         }
 
         .loader {
             border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid #ec4899;
+            border-top: 3px solid #6366f1;
             border-radius: 50%;
             width: 20px;
             height: 20px;
@@ -60,9 +60,9 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .token-badge {
-            background: rgba(236, 72, 153, 0.1);
-            border: 1px solid rgba(236, 72, 153, 0.2);
-            color: #f472b6;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: #818cf8;
         }
 
         input, textarea, select {
@@ -73,13 +73,13 @@
 
         input:focus {
             outline: none !important;
-            border-color: #ec4899 !important;
-            box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.3) !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3) !important;
         }
 
         .tab-active {
-            background: rgba(236, 72, 153, 0.2);
-            border-color: rgba(236, 72, 153, 0.5);
+            background: rgba(99, 102, 241, 0.25);
+            border-color: #6366f1;
             color: white;
         }
     </style>
@@ -91,11 +91,11 @@
     <div id="authContainer" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden">
         <div class="glass-card w-full max-w-md p-8">
             <div class="text-center mb-8">
-                <div class="inline-flex p-3 rounded-2xl bg-pink-500/10 mb-4">
-                    <i data-lucide="user-check" class="w-8 h-8 text-pink-400"></i>
+                <div class="inline-flex p-3 rounded-2xl bg-indigo-500/10 mb-4">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-indigo-400"></i>
                 </div>
                 <h2 id="authTitle" class="text-2xl font-bold">LabsOmar Studio</h2>
-                <p id="authSubtitle" class="text-slate-400 text-sm mt-2">Prihláste sa pomocou @LabsOmar.com</p>
+                <p id="authSubtitle" class="text-slate-400 text-sm mt-2">Prihláste sa cez @LabsOmar.com</p>
             </div>
 
             <form id="authForm" class="space-y-4">
@@ -119,7 +119,7 @@
             </form>
 
             <div class="mt-6 text-center">
-                <button id="toggleAuthMode" class="text-sm text-pink-400 hover:text-pink-300 font-medium">
+                <button id="toggleAuthMode" class="text-sm text-indigo-400 hover:text-indigo-300 font-medium">
                     Nemáte účet? Zaregistrujte sa
                 </button>
             </div>
@@ -131,11 +131,11 @@
         <!-- Header -->
         <header class="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
             <div class="flex items-center gap-4">
-                <div class="bg-pink-600 p-3 rounded-2xl shadow-lg shadow-pink-500/20">
-                    <i data-lucide="sparkles" class="w-8 h-8 text-white"></i>
+                <div class="bg-indigo-600 p-3 rounded-2xl shadow-lg shadow-indigo-500/20">
+                    <i data-lucide="brain-circuit" class="w-8 h-8 text-white"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-extrabold tracking-tight">LabsOmar <span class="text-pink-400 text-lg font-medium">Lovo Genny</span></h1>
+                    <h1 class="text-2xl font-extrabold tracking-tight">LabsOmar <span class="text-indigo-400 text-lg font-medium">AI Multi-Voice</span></h1>
                     <div class="flex items-center gap-2 mt-1">
                         <span id="userBadge" class="text-xs font-medium text-slate-400">neprihlásený</span>
                         <button id="logoutBtn" class="text-[10px] text-red-400 hover:underline">Odhlásiť</button>
@@ -160,22 +160,39 @@
             </div>
         </header>
 
-        <!-- API Settings -->
-        <div id="settingsPanel" class="hidden mb-8 glass-card p-6 border-pink-500/30">
-            <div class="flex justify-between items-start mb-4">
-                <h2 class="text-lg font-bold flex items-center gap-2">
-                    <i data-lucide="key-round" class="w-5 h-5 text-pink-400"></i>
-                    Lovo.ai API Konfigurácia
-                </h2>
-            </div>
-            <div class="flex gap-4">
-                <input type="password" id="apiKeyInput" placeholder="Vložte Lovo.ai API kľúč" 
-                       class="flex-1 px-4 py-3 rounded-xl focus:outline-none">
-                <button id="saveSettings" class="px-6 py-3 bg-pink-600 hover:bg-pink-500 rounded-xl font-bold transition-all">
-                    Uložiť
+        <!-- Provider Selection -->
+        <div class="flex justify-center mb-10">
+            <div class="glass-card p-1.5 flex gap-2">
+                <button id="providerEleven" class="tab-active px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all">
+                    <i data-lucide="layers" class="w-4 h-4"></i> ElevenLabs
+                </button>
+                <button id="providerGemini" class="px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all text-slate-400 hover:text-white">
+                    <i data-lucide="stars" class="w-4 h-4"></i> Gemini
                 </button>
             </div>
-            <p class="text-[10px] text-slate-500 mt-2">Kľúč nájdete v dashboarde Lovo.ai v sekcii API.</p>
+        </div>
+
+        <!-- API Settings Panel -->
+        <div id="settingsPanel" class="hidden mb-8 glass-card p-6 border-indigo-500/30">
+            <h2 class="text-lg font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="key-round" class="w-5 h-5 text-indigo-400"></i>
+                Konfigurácia API kľúčov
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-slate-400 uppercase">ElevenLabs Key</label>
+                    <input type="password" id="elevenKeyInput" placeholder="Vložte ElevenLabs kľúč" 
+                           class="w-full px-4 py-3 rounded-xl focus:outline-none">
+                </div>
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-slate-400 uppercase">Gemini Key</label>
+                    <input type="password" id="geminiKeyInput" placeholder="Vložte Gemini API kľúč" 
+                           class="w-full px-4 py-3 rounded-xl focus:outline-none">
+                </div>
+            </div>
+            <button id="saveSettings" class="mt-6 w-full py-3 bg-indigo-600 hover:bg-indigo-500 rounded-xl font-bold transition-all">
+                Uložiť všetky nastavenia
+            </button>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -183,15 +200,15 @@
             <div class="lg:col-span-8 space-y-6">
                 <div class="glass-card p-6">
                     <div class="flex justify-between items-center mb-4">
-                        <div class="flex items-center gap-2 text-pink-400 font-semibold uppercase text-xs tracking-widest">
-                            <i data-lucide="align-left" class="w-4 h-4"></i>
-                            Text na hovorenie
+                        <div id="providerIndicator" class="flex items-center gap-2 text-indigo-400 font-semibold uppercase text-xs tracking-widest">
+                            <i data-lucide="type" class="w-4 h-4"></i>
+                            Generovať cez ElevenLabs
                         </div>
                         <div id="costIndicator" class="text-xs text-slate-500 italic">Cena: 0 tokenov</div>
                     </div>
                     <textarea id="textInput" rows="10" 
                               class="w-full p-6 rounded-2xl text-lg leading-relaxed focus:outline-none custom-scrollbar resize-none"
-                              placeholder="Čo má LabsOmar povedať pomocou Lovo.ai?"></textarea>
+                              placeholder="Sem napíšte text na prečítanie..."></textarea>
                     <div class="flex justify-between mt-4">
                         <span id="charCount" class="text-sm text-slate-500 font-medium">0 / 5000 znakov</span>
                         <button id="clearText" class="text-xs text-slate-400 hover:text-white transition-colors">Vymazať</button>
@@ -199,37 +216,37 @@
                 </div>
             </div>
 
-            <!-- Right Side: Actions -->
+            <!-- Right Side: Voices & Actions -->
             <div class="lg:col-span-4 space-y-6">
                 <div class="glass-card p-6">
                     <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4 flex items-center gap-2">
-                        <i data-lucide="user" class="w-4 h-4"></i>
-                        Výber hlasu (Lovo)
+                        <i data-lucide="mic-2" class="w-4 h-4"></i>
+                        Dostupné hlasy
                     </h2>
                     <div class="relative mb-6">
                         <select id="voiceSelect" class="w-full p-4 rounded-xl appearance-none cursor-pointer pr-10">
-                            <option value="">Načítavam hlasy...</option>
+                            <option value="">Načítavam...</option>
                         </select>
-                        <i data-lucide="chevron-down" class="absolute right-4 top-5 w-4 h-4 text-slate-500"></i>
+                        <i data-lucide="chevron-down" class="absolute right-4 top-5 w-4 h-4 text-slate-500 pointer-events-none"></i>
                     </div>
 
                     <button id="generateBtn" class="w-full btn-primary text-white font-black py-5 rounded-2xl shadow-xl flex items-center justify-center gap-3 transition-all active:scale-[0.98]">
-                        <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
-                        GENEROVAŤ HLAS
+                        <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+                        SPUSTIŤ GENEROVANIE
                     </button>
                 </div>
 
                 <!-- Results -->
-                <div id="resultCard" class="hidden glass-card p-6 border-pink-500/30 overflow-hidden relative">
-                    <div class="absolute top-0 left-0 w-1 h-full bg-pink-500"></div>
+                <div id="resultCard" class="hidden glass-card p-6 border-indigo-500/30 overflow-hidden relative">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-indigo-500"></div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-bold text-pink-400 uppercase tracking-widest">Pripravené</span>
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Dokončené</span>
                         <span class="text-[10px] text-slate-500" id="timestamp">teraz</span>
                     </div>
-                    <audio id="audioPlayer" controls class="w-full mb-4 accent-pink-500"></audio>
+                    <audio id="audioPlayer" controls class="w-full mb-4 accent-indigo-500"></audio>
                     <a id="downloadBtn" href="#" target="_blank" class="w-full flex items-center justify-center gap-2 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl text-sm font-bold transition-all">
                         <i data-lucide="download-cloud" class="w-4 h-4"></i>
-                        OTVORIŤ / STIAHNUŤ
+                        STIAHNUŤ SÚBOR
                     </a>
                 </div>
 
@@ -246,11 +263,23 @@
         const REFILL_INTERVAL = 24 * 60 * 60 * 1000;
         const DOMAIN = "@LabsOmar.com";
 
+        // GEMINI VOICES LIST
+        const GEMINI_VOICES = [
+            "Zephyr", "Puck", "Charon", "Kore", "Fenrir", "Leda", "Orus", 
+            "Aoede", "Callirrhoe", "Autonoe", "Enceladus", "Iapetus", 
+            "Umbriel", "Algieba", "Despina", "Erinome", "Algenib", 
+            "Rasalgethi", "Laomedeia", "Achernar", "Alnilam", "Schedar", 
+            "Gacrux", "Pulcherrima", "Achird", "Zubenelgenubi", 
+            "Vindemiatrix", "Sadachbia", "Sadaltager", "Sulafat"
+        ];
+
         // ŠTÁT
         const state = {
             currentUser: null,
             users: JSON.parse(localStorage.getItem('labs_omar_users') || '[]'),
-            apiKey: localStorage.getItem('labs_omar_lovo_api_key') || '',
+            elevenKey: localStorage.getItem('labs_omar_eleven_key') || '',
+            geminiKey: localStorage.getItem('labs_omar_gemini_key') || '',
+            activeProvider: 'eleven', // eleven | gemini
             isGenerating: false,
             mode: 'login'
         };
@@ -269,11 +298,30 @@
             textInput: document.getElementById('textInput'),
             statusMessage: document.getElementById('statusMessage'),
             voiceSelect: document.getElementById('voiceSelect'),
-            apiKeyInput: document.getElementById('apiKeyInput'),
-            settingsPanel: document.getElementById('settingsPanel')
+            providerIndicator: document.getElementById('providerIndicator'),
+            settingsPanel: document.getElementById('settingsPanel'),
+            elevenKeyInput: document.getElementById('elevenKeyInput'),
+            geminiKeyInput: document.getElementById('geminiKeyInput')
         };
 
-        // SYSTÉM TOKENOV
+        // PREPÍNANIE PROVIDEROV
+        document.getElementById('providerEleven').addEventListener('click', () => switchProvider('eleven'));
+        document.getElementById('providerGemini').addEventListener('click', () => switchProvider('gemini'));
+
+        function switchProvider(p) {
+            state.activeProvider = p;
+            const isEleven = p === 'eleven';
+            
+            document.getElementById('providerEleven').className = isEleven ? 'tab-active px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all' : 'px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all text-slate-400 hover:text-white';
+            document.getElementById('providerGemini').className = !isEleven ? 'tab-active px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all' : 'px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all text-slate-400 hover:text-white';
+            
+            elements.providerIndicator.innerHTML = isEleven ? '<i data-lucide="layers" class="w-4 h-4"></i> Generovať cez ElevenLabs' : '<i data-lucide="stars" class="w-4 h-4"></i> Generovať cez Gemini';
+            lucide.createIcons();
+            
+            loadVoices();
+        }
+
+        // TOKEN SYSTÉM
         function saveUsers() { localStorage.setItem('labs_omar_users', JSON.stringify(state.users)); }
 
         function checkRefill() {
@@ -284,7 +332,7 @@
                 state.currentUser.tokens = INITIAL_TOKENS;
                 state.currentUser.lastRefill = now;
                 syncUser();
-                showStatus('Kredity obnovené!', 'success');
+                showStatus('Kredity boli obnovené!', 'success');
             }
             updateCountdown();
         }
@@ -309,95 +357,157 @@
             }
         }
 
-        // LOVO.AI API LOGIKA
-        async function fetchLovoVoices() {
-            if (!state.apiKey) return;
-            elements.voiceSelect.innerHTML = '<option>Načítavam Lovo hlasy...</option>';
+        // HLASY LOGIKA
+        async function loadVoices() {
+            elements.voiceSelect.innerHTML = '<option>Načítavam...</option>';
+            
+            if (state.activeProvider === 'gemini') {
+                elements.voiceSelect.innerHTML = GEMINI_VOICES.map(v => `<option value="${v}">${v}</option>`).join('');
+                return;
+            }
+
+            if (!state.elevenKey) {
+                elements.voiceSelect.innerHTML = '<option value="">Chýba ElevenLabs kľúč</option>';
+                return;
+            }
+
             try {
-                const res = await fetch('https://api.lovo.ai/v1/speakers', {
-                    headers: { 'X-API-KEY': state.apiKey }
+                const res = await fetch('https://api.elevenlabs.io/v1/voices', {
+                    headers: { 'xi-api-key': state.elevenKey }
                 });
-                if (!res.ok) throw new Error('Neplatný Lovo API kľúč.');
+                if (!res.ok) throw new Error();
                 const data = await res.json();
-                // Lovo vracia pole objektov s ID a menom
-                elements.voiceSelect.innerHTML = data.map(s => 
-                    `<option value="${s.id}">${s.displayName} (${s.locale})</option>`
-                ).join('');
-                showStatus('Hlasy z Lovo.ai načítané.', 'success');
+                elements.voiceSelect.innerHTML = data.voices.map(v => `<option value="${v.voice_id}">${v.name}</option>`).join('');
             } catch (e) {
-                showStatus(e.message, 'error');
                 elements.voiceSelect.innerHTML = '<option value="">Chyba načítania</option>';
             }
         }
 
-        async function generateLovoVoice() {
+        // GENEROVANIE CORE
+        elements.generateBtn.addEventListener('click', async () => {
             const text = elements.textInput.value.trim();
-            const speakerId = elements.voiceSelect.value;
+            const voiceId = elements.voiceSelect.value;
             const cost = text.length;
 
-            if (!state.apiKey) return showStatus('Zadajte Lovo API kľúč.', 'error');
             if (cost < 2) return showStatus('Zadajte text.', 'error');
+            if (!voiceId) return showStatus('Vyberte hlas.', 'error');
             if (state.currentUser.tokens < cost) return showStatus('Nedostatok tokenov.', 'error');
 
+            checkRefill();
             setLoading(true);
+
             try {
-                const res = await fetch('https://api.lovo.ai/v1/text-to-speech', {
-                    method: 'POST',
-                    headers: { 
-                        'X-API-KEY': state.apiKey,
-                        'Content-Type': 'application/json' 
-                    },
-                    body: JSON.stringify({
-                        speaker: speakerId,
-                        text: text
-                    })
-                });
-
-                const data = await res.json();
-                if (!res.ok) throw new Error(data.message || 'Chyba pri generovaní v Lovo.ai');
-
-                // Lovo.ai zvyčajne vracia pole 'urls' alebo 'url'
-                const audioUrl = data.urls ? data.urls[0] : (data.url || null);
-                
-                if (!audioUrl) throw new Error('Lovo.ai nevrátilo žiadnu URL adresu audia.');
-
-                state.currentUser.tokens -= cost;
-                syncUser();
-
-                elements.audioPlayer.src = audioUrl;
-                elements.downloadBtn.href = audioUrl;
-                elements.resultCard.classList.remove('hidden');
-                document.getElementById('timestamp').innerText = new Date().toLocaleTimeString();
-                showStatus('Lovo vygeneroval audio!', 'success');
-
+                if (state.activeProvider === 'eleven') {
+                    await runElevenLabs(text, voiceId, cost);
+                } else {
+                    await runGemini(text, voiceId, cost);
+                }
             } catch (e) {
                 showStatus(e.message, 'error');
             } finally {
                 setLoading(false);
             }
+        });
+
+        async function runElevenLabs(text, voiceId, cost) {
+            if (!state.elevenKey) throw new Error('Chýba ElevenLabs kľúč.');
+            const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
+                method: 'POST',
+                headers: { 'xi-api-key': state.elevenKey, 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    text: text,
+                    model_id: 'eleven_multilingual_v2',
+                    voice_settings: { stability: 0.5, similarity_boost: 0.75 }
+                })
+            });
+            if (!res.ok) throw new Error('ElevenLabs API chyba.');
+            const blob = await res.blob();
+            playAudio(blob, cost);
         }
 
-        // UI OVLÁDANIE
-        elements.generateBtn.addEventListener('click', generateLovoVoice);
+        async function runGemini(text, voiceId, cost) {
+            if (!state.geminiKey) throw new Error('Chýba Gemini kľúč.');
+            
+            const payload = {
+                contents: [{ parts: [{ text: text }] }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: {
+                        voiceConfig: {
+                            prebuiltVoiceConfig: { voiceName: voiceId }
+                        }
+                    }
+                }
+            };
 
+            const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${state.geminiKey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!res.ok) throw new Error('Gemini API chyba.');
+            const data = await res.json();
+            const pcmBase64 = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+            
+            if (!pcmBase64) throw new Error('Gemini nevrátil žiadne audio dáta.');
+
+            // PCM 16-bit to WAV
+            const binaryString = window.atob(pcmBase64);
+            const bytes = new Uint8Array(binaryString.length);
+            for (let i = 0; i < binaryString.length; i++) bytes[i] = binaryString.charCodeAt(i);
+            
+            const wavBlob = pcmToWav(bytes.buffer, 24000); // Gemini používa 24kHz
+            playAudio(wavBlob, cost);
+        }
+
+        function pcmToWav(buffer, sampleRate) {
+            const length = buffer.byteLength;
+            const wav = new Uint8Array(44 + length);
+            const view = new DataView(wav.buffer);
+            const writeString = (offset, string) => {
+                for (let i = 0; i < string.length; i++) wav[offset + i] = string.charCodeAt(i);
+            };
+            writeString(0, 'RIFF');
+            view.setUint32(4, 36 + length, true);
+            writeString(8, 'WAVE');
+            writeString(12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, 1, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 2, true);
+            view.setUint16(32, 2, true);
+            view.setUint16(34, 16, true);
+            writeString(36, 'data');
+            view.setUint32(40, length, true);
+            wav.set(new Uint8Array(buffer), 44);
+            return new Blob([wav], { type: 'audio/wav' });
+        }
+
+        function playAudio(blob, cost) {
+            const url = URL.createObjectURL(blob);
+            elements.audioPlayer.src = url;
+            elements.downloadBtn.href = url;
+            elements.resultCard.classList.remove('hidden');
+            state.currentUser.tokens -= cost;
+            syncUser();
+            showStatus('Audio vygenerované!', 'success');
+        }
+
+        // POMOCNÉ FUNKCIE
         function setLoading(l) {
             elements.generateBtn.disabled = l;
-            elements.generateBtn.innerHTML = l ? `<div class="loader"></div>` : `<i data-lucide="zap" class="w-5 h-5 fill-current"></i> GENEROVAŤ HLAS`;
+            elements.generateBtn.innerHTML = l ? `<div class="loader"></div>` : `<i data-lucide="play" class="w-5 h-5"></i> SPUSTIŤ GENEROVAŤ`;
             if(!l) lucide.createIcons();
         }
 
         function showStatus(msg, type) {
             elements.statusMessage.innerText = msg;
-            elements.statusMessage.className = `p-4 rounded-2xl text-xs font-medium border animate-pulse ${type === 'error' ? 'border-red-500 text-red-400' : 'border-pink-500 text-pink-400'}`;
+            elements.statusMessage.className = `p-4 rounded-2xl text-xs font-medium border animate-pulse ${type === 'error' ? 'border-red-500 text-red-400' : 'border-indigo-500 text-indigo-400'}`;
             elements.statusMessage.classList.remove('hidden');
             setTimeout(() => elements.statusMessage.classList.add('hidden'), 5000);
         }
-
-        elements.textInput.addEventListener('input', () => {
-            const len = elements.textInput.value.length;
-            document.getElementById('charCount').innerText = `${len} / 5000 znakov`;
-            document.getElementById('costIndicator').innerText = `Cena: ${len} tokenov`;
-        });
 
         // AUTH & SETTINGS
         document.getElementById('authForm').addEventListener('submit', (e) => {
@@ -422,21 +532,24 @@
             elements.userBadge.innerText = state.currentUser.email;
             elements.tokenDisplay.innerText = state.currentUser.tokens.toLocaleString();
             checkRefill();
-            if (state.apiKey) fetchLovoVoices();
+            loadVoices();
         });
 
         document.getElementById('toggleSettings').addEventListener('click', () => elements.settingsPanel.classList.toggle('hidden'));
+        
         document.getElementById('saveSettings').addEventListener('click', () => {
-            state.apiKey = elements.apiKeyInput.value.trim();
-            localStorage.setItem('labs_omar_lovo_api_key', state.apiKey);
-            fetchLovoVoices();
+            state.elevenKey = elements.elevenKeyInput.value.trim();
+            state.geminiKey = elements.geminiKeyInput.value.trim();
+            localStorage.setItem('labs_omar_eleven_key', state.elevenKey);
+            localStorage.setItem('labs_omar_gemini_key', state.geminiKey);
+            showStatus('Kľúče uložené!', 'success');
+            loadVoices();
             elements.settingsPanel.classList.add('hidden');
         });
 
         document.getElementById('toggleAuthMode').addEventListener('click', () => {
             state.mode = state.mode === 'login' ? 'register' : 'login';
             document.getElementById('authTitle').innerText = state.mode === 'login' ? 'LabsOmar Studio' : 'Nová registrácia';
-            document.getElementById('authSubmitBtn').innerText = state.mode === 'login' ? 'Vstúpiť do štúdia' : 'Vytvoriť účet';
         });
 
         document.getElementById('logoutBtn').addEventListener('click', () => {
@@ -444,19 +557,26 @@
             location.reload();
         });
 
+        elements.textInput.addEventListener('input', () => {
+            const len = elements.textInput.value.length;
+            document.getElementById('charCount').innerText = `${len} / 5000 znakov`;
+            document.getElementById('costIndicator').innerText = `Cena: ${len} tokenov`;
+        });
+
         setInterval(checkRefill, 1000);
 
         window.onload = () => {
             const session = localStorage.getItem('labs_omar_current_session');
-            elements.apiKeyInput.value = state.apiKey;
+            elements.elevenKeyInput.value = state.elevenKey;
+            elements.geminiKeyInput.value = state.geminiKey;
             if (session) {
                 state.currentUser = JSON.parse(session);
                 elements.auth.classList.add('hidden');
                 elements.app.classList.remove('opacity-0');
                 elements.userBadge.innerText = state.currentUser.email;
                 elements.tokenDisplay.innerText = state.currentUser.tokens.toLocaleString();
-                if (state.apiKey) fetchLovoVoices();
                 checkRefill();
+                loadVoices();
             } else {
                 elements.auth.classList.remove('hidden');
             }
@@ -464,3 +584,4 @@
     </script>
 </body>
 </html>
+
